@@ -37,8 +37,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc private func didAddGame(){
         //when we tap add button to add a game
         //couldnt find a api call to an actual game libraryso added ability to add games to be displayed in library
-        let alert = UIAlertController(title: "New Item", message: "Enter new item", preferredStyle: .alert)
-        
+        let alert = UIAlertController(title: "New Item", message: "Add a Video game to your library", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        //weakself added to avoid a memory leak
+        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: {[weak self]_ in
+            //get text from textfield only if textfield is not empty
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else{
+                return
+            }
+            //textfield not empty call addGame to add the text if title is not empty
+            self?.addGame(title: text)
+        }))
         present(alert,animated: true)
     }
     
