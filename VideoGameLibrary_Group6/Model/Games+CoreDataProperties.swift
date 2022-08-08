@@ -16,12 +16,13 @@ extension Games {
         return NSFetchRequest<Games>(entityName: "Games")
     }
 
-    @NSManaged public var id: Int32
-    @NSManaged public var title: String?
-    @NSManaged public var username: String?
+    @NSManaged public var company: String?
     @NSManaged public var genre: String?
+    @NSManaged public var id: Int32
     @NSManaged public var rating: Int16
+    @NSManaged public var title: String?
     @NSManaged public var user_id: Int64
+    @NSManaged public var username: String?
 
 }
 
