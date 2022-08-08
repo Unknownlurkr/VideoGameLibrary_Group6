@@ -71,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //query out all of the db items
         do{
             //assign to models to return array of video game items
-            let models = try context.fetch(Games.fetchRequest())
+            models = try context.fetch(Games.fetchRequest())
             //done on the main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
