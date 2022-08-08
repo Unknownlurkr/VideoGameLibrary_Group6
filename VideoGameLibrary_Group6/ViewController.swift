@@ -30,8 +30,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didAddGame))
         // Do any additional setup after loading the view.
+    }
+    
+    @objc private func didAddGame(){
+        //when we tap add button to add a game
+        //couldnt find a api call to an actual game libraryso added ability to add games to be displayed in library
+        let alert = UIAlertController(title: "New Item", message: "Enter new item", preferredStyle: .alert)
+        
+        present(alert,animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
